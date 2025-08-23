@@ -8,4 +8,4 @@
 - In the bash terminal run `cd frontend-technical-assessment`
 - Then Run `yarn`
 - Then Run `yarn dev`
-- Open your browser and go to [Locally run project](http://localhost:5173)
+- Open your browser and go to [Locally ran project](http://localhost:5173)

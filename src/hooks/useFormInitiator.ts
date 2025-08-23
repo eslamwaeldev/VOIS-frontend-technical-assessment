@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import response from "../../data/fields.json";
-import { FieldTypes } from "../schema";
+
 import * as Yup from "yup";
+import { FieldTypes, type Field, type FormState } from "../schema";
 
 const FILE_SIZE = 2 * 1024 * 1024 * 7; // 14MB
 
-const useFormInitiator = () => {
-  const [initialState, setInitialState] = useState<object>({});
+const useFormInitiator = (data: Field[]) => {
+  const [initialState, setInitialState] = useState<FormState>({});
   const [validationSchema, setValidationSchema] = useState<
     Yup.ObjectSchema<typeof initialState> | undefined
   >(undefined);
-  const { data } = response;
 
   useEffect(() => {
     let isMounted = true;
@@ -27,11 +26,10 @@ const useFormInitiator = () => {
       };
     }, {});
 
-    const validationSchemaCreator = Yup.object(
+    const validationSchemaCreator = Yup.object().shape(
       data.reduce((acc, field) => {
         if (field.required) {
           let validation;
-
           switch (field.type) {
             case FieldTypes.multiChoice:
               validation = Yup.array()

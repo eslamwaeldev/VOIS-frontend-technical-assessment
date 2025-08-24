@@ -32,9 +32,11 @@ const HomePage = () => {
           >
             {() => (
               <Form className="grid grid-cols-4 lg:grid-cols-12 gap-6 lg:gap-12 lg:gap-y-16 dark:text-gray-300">
-                {(data as Field[]).map((field, index) => (
-                  <InputSelector key={`KYC Form input: ${index}`} field={field} />
-                ))}
+                <div className="grid grid-cols-subgrid col-span-full">
+                  {(data as Field[]).map((field, index) => (
+                    <InputSelector key={`KYC Form input: ${index}`} field={field} />
+                  ))}
+                </div>
                 <OutlineButton
                   type="submit"
                   className="col-span-2 col-start-2 lg:col-start-6 cursor-pointer"

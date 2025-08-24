@@ -5,6 +5,20 @@ import { FieldTypes, type Field, type FormState } from "../schema";
 
 const FILE_SIZE = 2 * 1024 * 1024 * 7; // 14MB
 
+const today = new Date();
+const checkDate: Yup.TestFunction<Date | null | undefined, Yup.AnyObject> = (value) => {
+  if (!value) return true;
+  const selectedDate = new Date(value ?? "");
+  const isDateValid = Boolean(selectedDate > today);
+  return isDateValid;
+};
+
+const FileValidation: Yup.TestFunction<unknown | null | undefined, Yup.AnyObject> = (value) => {
+  if (!value) return true;
+  const isSizeOk = Boolean((value as File).size <= FILE_SIZE);
+  return isSizeOk;
+};
+
 const useFormInitiator = (data: Field[]) => {
   const [initialState, setInitialState] = useState<FormState>({});
   const [validationSchema, setValidationSchema] = useState<
@@ -28,8 +42,8 @@ const useFormInitiator = (data: Field[]) => {
 
     const validationSchemaCreator = Yup.object().shape(
       data.reduce((acc, field) => {
+        let validation;
         if (field.required) {
-          let validation;
           switch (field.type) {
             case FieldTypes.multiChoice:
               validation = Yup.array()
@@ -41,11 +55,13 @@ const useFormInitiator = (data: Field[]) => {
             case FieldTypes.file:
               validation = Yup.mixed()
                 .required("This field is required")
-                .test("fileSize", "File size is too large", (value) => {
-                  if (!value) return true;
-                  const isSizeOk = Boolean((value as File).size <= FILE_SIZE);
-                  return isSizeOk;
-                });
+                .test("fileSize", "File size is too large", FileValidation);
+              break;
+
+            case FieldTypes.date:
+              validation = Yup.date()
+                .required()
+                .test("dateValidity", "Date must be after today", checkDate);
               break;
 
             default:
@@ -57,7 +73,35 @@ const useFormInitiator = (data: Field[]) => {
             [field.id]: validation,
           };
         } else {
-          return acc;
+          switch (field.type) {
+            case FieldTypes.multiChoice:
+              validation = Yup.array()
+                .nullable()
+                .min(field.min ?? 1)
+                .max(field.max ?? 1);
+              break;
+
+            case FieldTypes.file:
+              validation = Yup.mixed()
+                .nullable()
+                .test("fileSize", "File size is too large", FileValidation);
+              break;
+
+            case FieldTypes.date:
+              validation = Yup.date()
+                .nullable()
+                .test("dateValidity", "Date must be after today", checkDate);
+              break;
+
+            default:
+              validation = Yup.string().nullable();
+              break;
+          }
+
+          return {
+            ...acc,
+            [field.id]: validation,
+          };
         }
       }, {})
     );

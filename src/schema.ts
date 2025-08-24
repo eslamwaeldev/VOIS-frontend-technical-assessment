@@ -14,6 +14,7 @@ export enum FieldTypes {
   select = "drop_down",
   multiChoice = "multi_choice",
   file = "file",
+  date = "date",
 }
 
 export type Field = {

@@ -25,6 +25,16 @@
       "label": "Country of Residence",
       "type": "drop_down",
       "options": ["Egypt", "USA", "Germany", "Other"]
+    },
+    {
+      "id": "profile_image",
+      "label": "Profile Picture",
+      "type": "file"
+    },
+    {
+      "id": "call_date",
+      "label": "Schedule a call",
+      "type": "date"
     }
   ]
 }

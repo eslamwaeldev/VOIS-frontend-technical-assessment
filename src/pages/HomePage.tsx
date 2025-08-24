@@ -14,6 +14,9 @@ const HomePage = () => {
   const handleSubmit = (values: FormState, { resetForm }: FormikHelpers<FormState>) => {
     console.log("🚀 ~ handleSubmit ~ values:", values);
     resetForm();
+    Object.keys(values).forEach((key) => {
+      localStorage.removeItem(key);
+    });
   };
 
   return (

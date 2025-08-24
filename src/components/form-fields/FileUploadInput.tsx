@@ -39,7 +39,7 @@ const FileUploadInput = ({ field }: Props) => {
         onChange={handleChange}
       />
       <button
-        className={`rounded-lg border-dashed border-2 p-2 aspect-[2/1] cursor-pointer flex items-center justify-center  ${
+        className={`rounded-lg border-dashed border-2 p-2 aspect-[2/1] max-w-full cursor-pointer flex items-center justify-center  ${
           meta.error ? "border-red-500" : "border-gray-700 dark:border-gray-300"
         } `}
         onClick={handleUpload}
@@ -47,10 +47,11 @@ const FileUploadInput = ({ field }: Props) => {
       >
         {isFileUploaded(fieldProps.value) ? (
           <img
-            height={200}
-            width={200}
+            height={250}
+            width={500}
             src={URL.createObjectURL(fieldProps.value as File)}
             alt="Uploaded Profile picture"
+            className="max-w-full max-h-full object-cover"
           />
         ) : (
           <UploadIcon />

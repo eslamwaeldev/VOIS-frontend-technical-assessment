@@ -1,7 +1,7 @@
-import { useField, useFormikContext } from "formik";
-import type { Field } from "../../schema";
-import UploadIcon from "../../assets/icons/UploadIcon";
+import { useField } from "formik";
 import { useRef, type ChangeEvent } from "react";
+import UploadIcon from "../../assets/icons/UploadIcon";
+import type { Field } from "../../schema";
 
 export interface Props {
   field: Field;
@@ -9,8 +9,8 @@ export interface Props {
 
 const FileUploadInput = ({ field }: Props) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [fieldProps, meta] = useField(field.id);
-  const { setFieldValue } = useFormikContext();
+  const [fieldProps, meta, helpers] = useField(field.id);
+
   const isFileUploaded = (value: unknown): value is File => {
     return value instanceof File;
   };
@@ -21,7 +21,7 @@ const FileUploadInput = ({ field }: Props) => {
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    setFieldValue(field.id, files?.[0]);
+    helpers.setValue(files?.[0]);
   };
 
   return (

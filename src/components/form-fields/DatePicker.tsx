@@ -2,14 +2,18 @@ import { useField } from "formik";
 import { useRef, type ChangeEvent } from "react";
 import Calendar from "../../assets/icons/Calendar";
 import type { Field } from "../../schema";
+import useLocalStorageValues from "../../hooks/useLocalStorageValues";
 
 export interface Props {
   field: Field;
 }
 
 const DatePicker = ({ field }: Props) => {
-  const [fieldProps, meta, helpers] = useField(field.id);
   const dateInputRef = useRef<HTMLInputElement | null>(null);
+  const [fieldProps, meta, helpers] = useField(field.id);
+
+  const saveToLocalStorage = useLocalStorageValues(field.id, helpers.setValue);
+
   const handleClick = () => {
     if (dateInputRef.current) {
       dateInputRef.current.showPicker();
@@ -18,6 +22,7 @@ const DatePicker = ({ field }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
     helpers.setValue(value);
+    saveToLocalStorage(value);
   };
   return (
     <div className={`flex flex-col gap-2 relative cursor-pointer`}>

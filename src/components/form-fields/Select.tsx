@@ -1,14 +1,21 @@
-import { type HTMLAttributes } from "react";
-import ChevronDownIcon from "../../assets/icons/ChevronDownIcon";
-import type { Field } from "../../schema";
 import { useField } from "formik";
+import { type ChangeEvent, type HTMLAttributes } from "react";
+import ChevronDownIcon from "../../assets/icons/ChevronDownIcon";
+import useLocalStorageValues from "../../hooks/useLocalStorageValues";
+import type { Field } from "../../schema";
 
 export interface Props extends HTMLAttributes<HTMLSelectElement> {
   field: Field;
 }
 
 const Select = ({ field, className, ...props }: Props) => {
-  const [fieldProps, meta] = useField(field.id);
+  const [fieldProps, meta, helpers] = useField(field.id);
+  const saveToLocalStorage = useLocalStorageValues(field.id, helpers.setValue);
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.currentTarget;
+    helpers.setValue(value);
+    saveToLocalStorage(value);
+  };
   return (
     <div className="flex flex-col gap-1 relative">
       <label htmlFor={field.id}>{field.label}</label>
@@ -21,6 +28,7 @@ const Select = ({ field, className, ...props }: Props) => {
           meta.error ? "border-red-500" : "border-gray-700 dark:border-gray-300"
         }  ${className}`}
         {...props}
+        onChange={handleChange}
       >
         <option value="disabled">Select your answer</option>
         {field.options?.map((option, index) => {

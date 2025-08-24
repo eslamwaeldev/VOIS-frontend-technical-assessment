@@ -1,6 +1,7 @@
 import { useField } from "formik";
 import { type ChangeEvent } from "react";
 import type { Field } from "../../schema";
+import useLocalStorageValues from "../../hooks/useLocalStorageValues";
 
 export interface Props {
   field: Field;
@@ -9,17 +10,20 @@ export interface Props {
 const MultiChoice = ({ field }: Props) => {
   const [fieldProps, meta, helpers] = useField(field.id);
 
+  const saveToLocalStorage = useLocalStorageValues(field.id, helpers.setValue);
+
   const addToValue = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
     const updatedValues = [...(fieldProps.value ? fieldProps.value : []), value];
-
     helpers.setValue(updatedValues);
+    saveToLocalStorage(updatedValues);
   };
 
   const removeValue = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
     const updatedValues = fieldProps.value?.filter((prevValue: string) => prevValue !== value);
     helpers.setValue(updatedValues);
+    saveToLocalStorage(updatedValues);
   };
 
   const handleCheckBoxChange = (e: ChangeEvent<HTMLInputElement>) => {

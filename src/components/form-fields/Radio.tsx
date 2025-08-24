@@ -1,6 +1,7 @@
 import { useField } from "formik";
 import { type ChangeEvent } from "react";
 import type { Field } from "../../schema";
+import useLocalStorageValues from "../../hooks/useLocalStorageValues";
 
 export interface Props {
   field: Field;
@@ -8,9 +9,11 @@ export interface Props {
 
 const Radio = ({ field }: Props) => {
   const [fieldProps, meta, helpers] = useField(field.id);
+  const saveToLocalStorage = useLocalStorageValues(field.id, helpers.setValue);
   const handleCheckBoxChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
     helpers.setValue(value);
+    saveToLocalStorage(value);
   };
   return (
     <div

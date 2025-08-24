@@ -12,7 +12,7 @@ const TextField = ({ field }: Props) => {
       <label htmlFor={field.id}>{field.label}</label>
       <input
         {...fieldProps}
-        type={field.type}
+        type="text"
         id={field.id}
         name={field.id}
         value={fieldProps.value ? fieldProps.value : ""}

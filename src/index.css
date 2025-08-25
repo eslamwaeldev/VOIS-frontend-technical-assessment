@@ -12,3 +12,15 @@ select {
   -moz-appearance: none; /* For Firefox */
   appearance: none; /* Standard property */
 }
+
+input[type="date"] {
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* Standard property */
+}
+
+/* For Chrome, Safari, Opera */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

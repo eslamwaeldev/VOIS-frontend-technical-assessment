@@ -3,6 +3,8 @@
 
 @theme {
   --font-sans: "Lexend", ui-sans-serif, sans-serif;
+  --color-vodafone-red: #e60000;
+  --color-vodafone-gray: #333;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

@@ -22,9 +22,9 @@ const TextField = ({ field }: Props) => {
       <label htmlFor={field.id}>{field.label}</label>
       <input
         {...fieldProps}
-        type="text"
         id={field.id}
         name={field.id}
+        type={field.type}
         value={fieldProps.value ? fieldProps.value : ""}
         className={`h-11 rounded-lg border-2 p-2 cursor-pointer ${
           meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"

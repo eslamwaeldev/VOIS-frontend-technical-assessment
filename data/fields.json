@@ -35,6 +35,11 @@
       "id": "call_date",
       "label": "Schedule a call",
       "type": "date"
+    },
+    {
+      "id": "details",
+      "label": "Tell us more",
+      "type": "text_area"
     }
   ]
 }

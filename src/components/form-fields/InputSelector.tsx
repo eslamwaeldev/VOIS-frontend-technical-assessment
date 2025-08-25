@@ -1,7 +1,6 @@
 import { FieldTypes, type Field } from "../../schema";
 import DatePicker from "./DatePicker";
 import FileUploadInput from "./FileUploadInput";
-
 import MultiChoice from "./MultiChoice";
 import Radio from "./Radio";
 import Select from "./Select";
@@ -14,13 +13,6 @@ export interface Props {
 
 const InputSelector = ({ field }: Props) => {
   switch (field.type) {
-    case FieldTypes.text:
-      return (
-        <div className="col-span-4">
-          <TextField field={field} />
-        </div>
-      );
-
     case FieldTypes.select:
       return (
         <div className="col-span-4">

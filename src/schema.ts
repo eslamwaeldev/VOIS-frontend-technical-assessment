@@ -16,6 +16,7 @@ export enum FieldTypes {
   multiChoice = "multi_choice",
   file = "file",
   date = "date",
+  email = "email",
 }
 
 export type Field = {

@@ -1,13 +1,7 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router";
 import MainTitle from "../components/MainTitle";
-import OutlineButton from "../components/OutlineButton";
 
 const ThankyouPage = () => {
-  const navigate = useNavigate();
-  const goHome = () => {
-    navigate(`/`);
-  };
   return (
     <>
       <Helmet>
@@ -19,7 +13,6 @@ const ThankyouPage = () => {
         <p className="text-sm text-center lg:text-lg font-medium">
           We appreciate you for taking the time to fill this form.
         </p>
-        <OutlineButton onClick={goHome}>Back Home</OutlineButton>
       </main>
     </>
   );

@@ -4,7 +4,7 @@ import ThemeButton from "./ThemeButton";
 const Navbar = () => {
   return (
     <nav
-      className={`bg-white text-gray-900  dark:bg-gray-950 dark:text-gray-50
+      className={`bg-white text-gray-900  dark:bg-vodafone-gray dark:text-gray-50
        min-w-full w-full flex justify-between items-center border-b-2 border-gray-300 dark:border-gray-700 shadow-sm p-6 lg:px-20 lg:py-2 `}
     >
       <div className="flex gap-8 h-full">

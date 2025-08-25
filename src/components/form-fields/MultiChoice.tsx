@@ -39,10 +39,10 @@ const MultiChoice = ({ field }: Props) => {
   return (
     <div
       className={`flex flex-col gap-2 border-2 ${
-        meta.error ? "border-red-500" : "border-gray-700 dark:border-gray-300"
+        meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
       }  px-4 py-2 rounded-lg relative`}
     >
-      <label className="absolute -top-4 bg-gray-50 dark:bg-gray-950 left-4" htmlFor={field.id}>
+      <label className="absolute -top-4 bg-gray-50 dark:bg-vodafone-gray left-4" htmlFor={field.id}>
         {field.label} :
       </label>
       {field.options?.map((option, index) => {

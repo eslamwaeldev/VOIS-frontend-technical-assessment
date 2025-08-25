@@ -29,7 +29,7 @@ const HomePage = () => {
         <meta name="description" content="VOIS KYC form" />
         <title>Register !</title>
       </Helmet>
-      <div className="w-full h-full min-h-screen dark:bg-gray-950 flex flex-col gap-6 lg:gap-30 pt-3 lg:py-10 items-center px-8 lg:px-20">
+      <div className="w-full h-full min-h-screen dark:bg-vodafone-gray flex flex-col gap-6 lg:gap-30 pt-3 lg:py-10 items-center px-8 lg:px-20">
         <MainTitle className="self-start">Welcome to our family</MainTitle>
         <section className="w-full">
           <Formik

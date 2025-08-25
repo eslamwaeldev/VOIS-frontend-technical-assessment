@@ -6,7 +6,10 @@ const MainTitle = ({
   ...props
 }: PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>) => {
   return (
-    <h1 className={`text-5xl lg:text-6xl font-bold text-red-600 italic ${className}`} {...props}>
+    <h1
+      className={`text-5xl lg:text-6xl font-bold text-vodafone-red italic ${className}`}
+      {...props}
+    >
       {children}
     </h1>
   );

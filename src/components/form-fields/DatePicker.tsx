@@ -35,7 +35,9 @@ const DatePicker = ({ field }: Props) => {
         id={field.id}
         value={fieldProps.value ? fieldProps.value : ""}
         className={`h-11 appearance-none rounded-lg border-2 p-2 cursor-pointer ${
-          meta.error && fieldProps.value ? "border-red-500" : "border-gray-700 dark:border-gray-300"
+          meta.error && fieldProps.value
+            ? "border-vodafone-red"
+            : "border-gray-700 dark:border-gray-300"
         }`}
         onClick={handleClick}
         onChange={handleChange}

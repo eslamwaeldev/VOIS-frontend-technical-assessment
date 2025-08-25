@@ -25,7 +25,7 @@ const Select = ({ field, className, ...props }: Props) => {
         id={field.id}
         value={fieldProps.value ? fieldProps.value : "disabled"}
         className={`appearance-none h-11 rounded-lg border-2 p-2 cursor-pointer ${
-          meta.error ? "border-red-500" : "border-gray-700 dark:border-gray-300"
+          meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
         }  ${className}`}
         {...props}
         onChange={handleChange}

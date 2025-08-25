@@ -18,11 +18,11 @@ const Radio = ({ field }: Props) => {
   return (
     <div
       className={`flex flex-col gap-2 border-2 ${
-        meta.error ? "border-red-500" : "border-gray-700 dark:border-gray-300"
+        meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
       }  px-4 py-2 rounded-lg relative`}
     >
       <label
-        className="absolute -top-4 left-4 bg-gray-50 dark:bg-gray-950 px-0.5"
+        className="absolute -top-4 left-4 bg-gray-50 dark:bg-vodafone-gray px-0.5"
         htmlFor={field.id}
       >
         {field.label} :

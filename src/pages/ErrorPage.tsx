@@ -13,7 +13,7 @@ const ErrorPage = () => {
       <Helmet>
         <title>An error has occurred</title>
       </Helmet>
-      <main className="w-full h-full min-h-screen dark:bg-gray-950 dark:text-gray-300 flex flex-col gap-6 pt-30 lg:pt-50 items-center px-8">
+      <main className="w-full h-full min-h-screen dark:bg-vodafone-gray dark:text-gray-300 flex flex-col gap-6 pt-30 lg:pt-50 items-center px-8">
         <MainTitle>Oops An error has occurred !</MainTitle>
         <p className="text-sm text-center lg:text-lg font-medium">
           The page you are trying to reach is expired or unavailable

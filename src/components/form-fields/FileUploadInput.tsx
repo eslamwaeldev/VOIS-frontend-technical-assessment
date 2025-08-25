@@ -40,7 +40,7 @@ const FileUploadInput = ({ field }: Props) => {
       />
       <button
         className={`rounded-lg border-dashed border-2 p-2 aspect-[2/1] max-w-full cursor-pointer flex items-center justify-center  ${
-          meta.error ? "border-red-500" : "border-gray-700 dark:border-gray-300"
+          meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
         } `}
         onClick={handleUpload}
         type="button"

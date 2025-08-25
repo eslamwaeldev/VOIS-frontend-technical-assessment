@@ -10,6 +10,7 @@ export type Theme = {
 
 export enum FieldTypes {
   text = "text",
+  textArea = "text_area",
   radioButton = "radio_buttons",
   select = "drop_down",
   multiChoice = "multi_choice",

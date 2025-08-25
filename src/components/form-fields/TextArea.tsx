@@ -27,7 +27,7 @@ const TextArea = ({ field }: Props) => {
         cols={30}
         rows={10}
         onChange={handleChange}
-        className={`h-11 rounded-lg border-2 p-2 cursor-pointer ${
+        className={`rounded-lg border-2 p-2 cursor-pointer ${
           meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
         }`}
       ></textarea>

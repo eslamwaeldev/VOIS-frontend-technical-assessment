@@ -5,6 +5,7 @@ import FileUploadInput from "./FileUploadInput";
 import MultiChoice from "./MultiChoice";
 import Radio from "./Radio";
 import Select from "./Select";
+import TextArea from "./TextArea";
 import TextField from "./TextField";
 
 export interface Props {
@@ -55,8 +56,19 @@ const InputSelector = ({ field }: Props) => {
         </div>
       );
 
+    case FieldTypes.textArea:
+      return (
+        <div className="col-span-4">
+          <TextArea field={field} />
+        </div>
+      );
+
     default:
-      break;
+      return (
+        <div className="col-span-4">
+          <TextField field={field} />
+        </div>
+      );
   }
 };
 

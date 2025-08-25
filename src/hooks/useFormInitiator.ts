@@ -5,6 +5,8 @@ import { FieldTypes, type Field, type FormState } from "../schema";
 
 const FILE_SIZE = 2 * 1024 * 1024 * 7; // 14MB
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const today = new Date();
 const checkDate: Yup.TestFunction<Date | null | undefined, Yup.AnyObject> = (value) => {
   if (!value) return true;
@@ -64,6 +66,14 @@ const useFormInitiator = (data: Field[]) => {
                 .test("dateValidity", "Date must be after today", checkDate);
               break;
 
+            case FieldTypes.email:
+              validation = Yup.string()
+                .required("Email is required")
+                .test("is-valid-email", "Must be a valid email", (value) =>
+                  value ? emailRegex.test(value) : true
+                );
+              break;
+
             default:
               validation = Yup.string().required("This field is required ");
               break;
@@ -91,6 +101,14 @@ const useFormInitiator = (data: Field[]) => {
               validation = Yup.date()
                 .nullable()
                 .test("dateValidity", "Date must be after today", checkDate);
+              break;
+
+            case FieldTypes.email:
+              validation = Yup.string()
+                .test("is-valid-email", "Must be a valid email", (value) =>
+                  value ? emailRegex.test(value) : true
+                )
+                .nullable();
               break;
 
             default:

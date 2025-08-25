@@ -7,6 +7,11 @@
       "required": true
     },
     {
+      "id": "user_email",
+      "label": "Email",
+      "type": "email"
+    },
+    {
       "id": "gender",
       "label": "Gender",
       "type": "radio_buttons",
@@ -24,7 +29,8 @@
       "id": "country",
       "label": "Country of Residence",
       "type": "drop_down",
-      "options": ["Egypt", "USA", "Germany", "Other"]
+      "options": ["Egypt", "USA", "Germany", "Other"],
+      "required": true
     },
     {
       "id": "profile_image",
@@ -34,7 +40,8 @@
     {
       "id": "call_date",
       "label": "Schedule a call",
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     {
       "id": "details",

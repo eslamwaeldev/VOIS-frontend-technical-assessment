@@ -18,13 +18,15 @@ const Select = ({ field, className, ...props }: Props) => {
   };
   return (
     <div className="flex flex-col gap-1 relative">
-      <label htmlFor={field.id}>{field.label}</label>
+      <label htmlFor={field.id} className="absolute -top-3.5 left-4 bg-gray-50 z-10 px-1">
+        <span className="opacity-70">{field.label}</span>
+      </label>
       <select
         {...fieldProps}
         name={field.id}
         id={field.id}
         value={fieldProps.value ? fieldProps.value : "disabled"}
-        className={`appearance-none h-11 rounded-lg border-2 p-2 cursor-pointer ${
+        className={` h-14 rounded-lg border-2 p-2 relative cursor-pointer ${
           meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
         }  ${className}`}
         {...props}
@@ -39,7 +41,7 @@ const Select = ({ field, className, ...props }: Props) => {
           );
         })}
       </select>
-      <ChevronDownIcon className="absolute right-4 top-9.5 cursor-pointer pointer-events-none" />
+      <ChevronDownIcon className="absolute right-4 top-4 lg:top-9.5 cursor-pointer pointer-events-none" />
       {meta.error && <p className="text-red-500 text-sm">{meta.error}</p>}
     </div>
   );

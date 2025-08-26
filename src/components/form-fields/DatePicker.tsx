@@ -42,7 +42,7 @@ const DatePicker = ({ field }: Props) => {
         onClick={handleClick}
         onChange={handleChange}
       />
-      <Calendar className="absolute right-4 top-4 lg:top-9.5 !cursor-pointer pointer-events-none" />
+      <Calendar className="absolute right-4 top-4  !cursor-pointer pointer-events-none" />
       {meta.error && <p className="text-red-500 text-sm">{meta.error}</p>}
     </div>
   );

@@ -22,10 +22,10 @@ const Radio = ({ field }: Props) => {
       }  px-4 py-2 rounded-lg relative`}
     >
       <label
-        className="absolute -top-4 left-4 bg-gray-50 dark:bg-vodafone-gray px-0.5"
+        className="absolute -top-4 left-4 bg-gray-50 dark:bg-vodafone-gray px-1"
         htmlFor={field.id}
       >
-        {field.label} :
+        <span className="opacity-70">{field.label}</span>
       </label>
       {field.options?.map((option, index) => {
         return (

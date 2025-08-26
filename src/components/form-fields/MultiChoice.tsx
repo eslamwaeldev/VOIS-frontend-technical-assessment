@@ -42,8 +42,11 @@ const MultiChoice = ({ field }: Props) => {
         meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
       }  px-4 py-2 rounded-lg relative`}
     >
-      <label className="absolute -top-4 bg-gray-50 dark:bg-vodafone-gray left-4" htmlFor={field.id}>
-        {field.label} :
+      <label
+        className="absolute -top-4 bg-gray-50 px-1 dark:bg-vodafone-gray left-4"
+        htmlFor={field.id}
+      >
+        <span className="opacity-70">{field.label}</span>
       </label>
       {field.options?.map((option, index) => {
         return (

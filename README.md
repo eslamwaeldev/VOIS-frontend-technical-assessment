@@ -46,3 +46,13 @@ npm run dev
 ```
 Then visit:
 * [http://localhost:5173](http://localhost:5173)
+
+#### 4. Run unit tests
+- With yarn
+```bash
+yanr test
+```
+- Or with npm 
+```bash
+npm run test
+```

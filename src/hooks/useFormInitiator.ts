@@ -62,7 +62,7 @@ const useFormInitiator = (data: Field[]) => {
 
             case FieldTypes.date:
               validation = Yup.date()
-                .required()
+                .required("This field is required")
                 .test("dateValidity", "Date must be after today", checkDate);
               break;
 

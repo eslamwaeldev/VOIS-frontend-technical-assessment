@@ -18,8 +18,10 @@ const TextArea = ({ field }: Props) => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={field.id}>{field.label}</label>
+    <div className="flex flex-col gap-2 relative">
+      <label className="absolute -top-3.5 left-4 bg-gray-50 z-10 px-1" htmlFor={field.id}>
+        <span className="opacity-70">{field.label}</span>
+      </label>
       <textarea
         {...fieldProps}
         name={field.id}

@@ -12,8 +12,25 @@ const HomePage = () => {
   const { data } = response;
   const navigate = useNavigate();
   const { initialState, validationSchema } = useFormInitiator(data as Field[]);
-  const handleSubmit = (values: FormState, { resetForm }: FormikHelpers<FormState>) => {
+  const handleSubmit = async (values: FormState, { resetForm }: FormikHelpers<FormState>) => {
     console.log("🚀 ~ handleSubmit ~ values:", values);
+
+    const formSubmission = new FormData();
+
+    Object.entries(values).forEach(([key, value]) => {
+      console.log("🚀 ~ handleSubmit ~ key:", key);
+      formSubmission.append(`${key}`, value as string | Blob);
+    });
+
+    console.log("🚀 ~ handleSubmit ~ formSubmission:", formSubmission);
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: formSubmission,
+    });
+
+    console.log("🚀 ~ handleSubmit ~ response:", response);
+
     toast.success("Thank you, form submitted successfully");
     resetForm();
     Object.keys(values).forEach((key) => {
@@ -28,7 +45,7 @@ const HomePage = () => {
         <meta name="description" content="VOIS KYC form" />
         <title>Register !</title>
       </Helmet>
-      <div className="w-full h-full min-h-screen dark:bg-vodafone-gray flex flex-col gap-6 lg:gap-8 pt-3 lg:py-10 items-center px-8 lg:px-20">
+      <div className="w-full h-full min-h-screen bg-gray-50 dark:bg-vodafone-gray flex flex-col gap-6 lg:gap-8 pt-3 lg:py-10 items-center px-8 lg:px-20">
         <MainTitle className="self-start">Welcome to our family</MainTitle>
         <section className="w-full">
           <Formik

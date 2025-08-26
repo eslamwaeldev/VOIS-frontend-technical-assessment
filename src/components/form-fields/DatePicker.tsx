@@ -25,8 +25,10 @@ const DatePicker = ({ field }: Props) => {
     saveToLocalStorage(value);
   };
   return (
-    <div className={`flex flex-col gap-2 relative cursor-pointer`}>
-      <label htmlFor={field.id}>{field.label}</label>
+    <div className={`flex flex-col gap-2 cursor-pointer relative`}>
+      <label htmlFor={field.id} className="absolute -top-3.5 left-4 bg-gray-50 z-10 px-1 ">
+        <span className="opacity-70">{field.label}</span>
+      </label>
       <input
         {...fieldProps}
         type="date"
@@ -34,16 +36,14 @@ const DatePicker = ({ field }: Props) => {
         name={field.id}
         id={field.id}
         value={fieldProps.value ? fieldProps.value : ""}
-        className={`h-11 appearance-none rounded-lg border-2 p-2 cursor-pointer ${
-          meta.error && fieldProps.value
-            ? "border-vodafone-red"
-            : "border-gray-700 dark:border-gray-300"
+        className={`h-14 appearance-none rounded-lg border-2 p-2 cursor-pointer ${
+          meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
         }`}
         onClick={handleClick}
         onChange={handleChange}
       />
-      <Calendar className="absolute right-4 top-9.5 !cursor-pointer pointer-events-none" />
-      {meta.error && fieldProps.value && <p className="text-red-500 text-sm">{meta.error}</p>}
+      <Calendar className="absolute right-4 top-4 lg:top-9.5 !cursor-pointer pointer-events-none" />
+      {meta.error && <p className="text-red-500 text-sm">{meta.error}</p>}
     </div>
   );
 };

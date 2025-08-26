@@ -18,15 +18,17 @@ const TextField = ({ field }: Props) => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={field.id}>{field.label}</label>
+    <div className="flex flex-col gap-2 relative">
+      <label htmlFor={field.id} className="absolute -top-3.5 left-4 bg-gray-50 z-10 px-1">
+        <span className="opacity-70">{field.label}</span>
+      </label>
       <input
         {...fieldProps}
         id={field.id}
         name={field.id}
         type={field.type}
         value={fieldProps.value ? fieldProps.value : ""}
-        className={`h-11 rounded-lg border-2 p-2 cursor-pointer ${
+        className={`h-14 rounded-lg border-2 p-2 cursor-pointer ${
           meta.error ? "border-vodafone-red" : "border-gray-700 dark:border-gray-300"
         }`}
         onChange={handleChange}

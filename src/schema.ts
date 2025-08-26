@@ -24,9 +24,9 @@ export type Field = {
   label: string;
   type: string;
   options?: string[];
-  required?: undefined;
-  min?: undefined;
-  max?: undefined;
+  required?: undefined | boolean;
+  min?: undefined | number;
+  max?: undefined | number;
 };
 
 export type FormState = {
